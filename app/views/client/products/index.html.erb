@@ -1,5 +1,6 @@
+<a href="/client/products/new">Add a Book to the Store</a>
+
 <% @products.each do |book| %>
-  <p>id: <%= book['book']['id'] %></p>
   <p>title: <a href="/client/products/<%= book['book']['id'] %>"><%= book['book']['name'] %><a></p>
   <p>author: <%= book['book']['author'] %></p>
   <p>price: <%= book['book']['price'] %></p>

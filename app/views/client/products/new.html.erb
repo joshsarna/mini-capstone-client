@@ -1,0 +1,30 @@
+<p>Fill out book information below and click submit to add a new book to the store.</p>
+
+<%= form_tag '/client/products', method: :post do %>
+  <div>
+    Title: <input type="text" name="input_name">
+  </div>
+  <div>
+    Author: <input type="text" name="input_author">
+  </div>
+  <div>
+    Price: <input type="text" name="input_price">
+  </div>
+  <div>
+    Description: <input type="text" name="input_description">
+  </div>
+  <div>
+    Format: <input type="text" name="input_format">
+  </div>
+  <div>
+    Condition: <input type="text" name="input_condition">
+  </div>
+  <div>
+    Image URL: <input type="text" name="input_image_url">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+<% end %>
+
+<a href="/client/products">Cancel</a>

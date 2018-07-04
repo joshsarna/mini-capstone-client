@@ -1,0 +1,32 @@
+<%= form_tag "/client/products/#{@product['book']['id']}", method: :patch do %>
+  <div>
+    Title: <input type="text" name="input_name" value="<%= @product['book']['name'] %>">
+  </div>
+  <div>
+    Author: <input type="text" name="input_author" value="<%= @product['book']['author'] %>">
+  </div>
+  <div>
+    Price: <input type="text" name="input_price" value="<%= @product['book']['price'] %>">
+  </div>
+  <div>
+    Description: <input type="text" name="input_description" value="<%= @product['book']['description'] %>">
+  </div>
+  <div>
+    Format: <input type="text" name="input_format" value="<%= @product['book']['format'] %>">
+  </div>
+  <div>
+    Condition: <input type="text" name="input_condition" value="<%= @product['book']['condition'] %>">
+  </div>
+  <div>
+    Image URL: <input type="text" name="input_image_url" value="<%= @product['book']['image_url'] %>">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+<% end %>
+
+<%= form_tag "/client/products/#{@product['book']['id']}", method: :delete do %>
+<input type="submit" value="Remove this Book from the Store">
+<% end %>
+
+<a href="/client/products">Cancel</a>
