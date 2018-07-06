@@ -4,7 +4,7 @@
 <p>Format: <%= @product['book']['format'] %></p>
 <p>Condition: <%= @product['book']['condition'] %></p>
 
-<%= form_tag "/client/products/#{@product['book']['id']}/edit", method: :get do %>
+<%= form_tag "/client/products/#{params[:id]}/edit", method: :get do %>
   <input type="submit" value="Edit this Book">
 <% end %>
 
