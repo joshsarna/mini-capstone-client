@@ -1,6 +1,8 @@
 <p>Title: <%= @product['book']['name'] %></p>
 <p>Author: <%= @product['book']['author'] %></p>
-<p>Price: <%= @product['book']['price'] %></p>
+<h4><%= @product['formatted']['discount_message'] %></h4>
+<p class="price">Price: <%= @product['book']['price'] %></p>
+<p>Price with Tax: <%= @product['formatted']['total'] %> (Tax: <%= @product['formatted']['tax'] %>)</p>
 <p>Format: <%= @product['book']['format'] %></p>
 <p>Condition: <%= @product['book']['condition'] %></p>
 
