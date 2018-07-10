@@ -1,10 +1,10 @@
 <%= button_to "Add a Book to the Store", "/client/products/new", method: :get %>
 
 <% @products.each do |book| %>
-  <p>Title: <a href="/client/products/<%= book['book']['id'] %>"><%= book['book']['name'] %><a></p>
-  <p>Author: <%= book['book']['author'] %></p>
-  <p>Price: <%= book['book']['price'] %></p>
-  <p>Format: <%= book['book']['format'] %></p>
-  <p>Condition: <%= book['book']['condition'] %></p>
+  <p>Title: <a href="/client/products/<%= book['id'] %>"><%= book['title'] %><a></p>
+  <p>Author: <%= book['author'] %></p>
+  <p>Price: <%= book['price'] %></p>
+  <p>Format: <%= book['format'] %></p>
+  <p>Condition: <%= book['condition'] %></p>
   <hr>
 <% end %>

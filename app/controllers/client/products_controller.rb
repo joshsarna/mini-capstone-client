@@ -24,7 +24,7 @@ class Client::ProductsController < ApplicationController
     )
     @product = response.body
     flash[:create] = "You successfully added a book to the store."
-    redirect_to "/client/products/#{@product['book']['id']}"
+    redirect_to "/client/products/#{@product['id']}"
   end
 
   def edit
@@ -39,13 +39,13 @@ class Client::ProductsController < ApplicationController
       input_price: params[:input_price],
       input_description: params[:input_description],
       input_format: params[:input_format],
-      input_condition: params[:input_format],
+      input_condition: params[:input_condition],
       input_image_url: params[:input_image_url]
     }
     response = Unirest.patch("localhost:3000/api/products/#{params[:id]}", parameters: client_params)
     @product = response.body
     flash[:update] = "You successfully updated this book posting."
-    redirect_to "/client/products/#{@product['book']['id']}"
+    redirect_to "/client/products/#{@product['id']}"
   end
 
   def destroy
