@@ -1,6 +1,10 @@
 class Client::ProductsController < ApplicationController
   def index
-    response = Unirest.get("localhost:3000/api/products")
+    response = Unirest.get("localhost:3000/api/products", parameters: {
+      search: "#{params[:search]}",
+      search_type: "#{params[:search_type]}"
+      }
+    )
     @products = response.body
   end
 
