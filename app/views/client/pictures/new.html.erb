@@ -1,0 +1,9 @@
+<%= form_tag '/client/pictures', method: :post do  %>
+  <div>
+    URL: <input type="text" name="url">
+  </div>
+  <div>
+    Product ID: <input type="text" name="product_id" value="<%= params[:product_id] %>">
+  </div>
+  <input type="submit" value="Submit">
+<% end %>

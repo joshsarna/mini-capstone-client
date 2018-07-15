@@ -6,7 +6,7 @@
   </div>
   Search by:
   <div>
-    <input type="radio" name="search_type" value="title" checked>Title<br>
+    <input type="radio" name="search_type" value="name" checked>Title<br>
     <input type="radio" name="search_type" value="author">Author
   </div>
   <div>
@@ -20,7 +20,7 @@
 <% @products.each do |book| %>
   <p>Title: <a href="/client/products/<%= book['id'] %>"><%= book['title'] %><a></p>
   <p>Author: <%= book['author'] %></p>
-  <p>Price: <%= book['price'] %></p>
+  <p>Price: $<%= book['price'] %></p>
   <p>Format: <%= book['format'] %></p>
   <p>Condition: <%= book['condition'] %></p>
   <hr>

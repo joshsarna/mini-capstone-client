@@ -7,12 +7,7 @@ class Client::ProductsController < ApplicationController
       }
     )
     @products = response.body
-  end
-
-  def show
-    id = params[:id]
-    response = Unirest.get("localhost:3000/api/products/#{id}")
-    @product = response.body
+    flash[:search_message] = "Showing results for '#{params[:search]}'"
   end
 
   def create
@@ -24,12 +19,19 @@ class Client::ProductsController < ApplicationController
         input_description: params[:input_description],
         input_format: params[:input_format],
         input_condition: params[:input_format],
-        input_image_url: params[:input_image_url]
+        input_image_url: params[:input_image_url],
+        input_supplier_id: params[:input_supplier_id]
       }
     )
     @product = response.body
     flash[:create] = "You successfully added a book to the store."
     redirect_to "/client/products/#{@product['id']}"
+  end
+
+  def show
+    id = params[:id]
+    response = Unirest.get("localhost:3000/api/products/#{id}")
+    @product = response.body
   end
 
   def edit

@@ -11,6 +11,17 @@
   <div>
     Description: <input type="text" name="input_description" value="<%= @product['description'] %>">
   </div>
+  <% if @product['formatted']['image'][0] %>
+    Images:
+      <% @product['formatted']['image'].each do |image| %>
+        <div>
+          <input type="text" name="input_description" value="<%= image['url'] %>">
+        </div>
+      <% end %>
+  <% end %>
+  <div>
+    Description: <input type="text" name="input_description" value="<%= @product['description'] %>">
+  </div>
   <div>
     Format: <input type="text" name="input_format" value="<%= @product['format'] %>">
   </div>
@@ -18,15 +29,18 @@
     Condition: <input type="text" name="input_condition" value="<%= @product['condition'] %>">
   </div>
   <div>
-    Image URL: <input type="text" name="input_image_url" value="<%= @product['image_url'] %>">
-  </div>
-  <div>
     <input type="submit" value="Submit">
   </div>
 <% end %>
 
 <%= form_tag "/client/products/#{@product['id']}", method: :delete do %>
-<input type="submit" value="Remove this Book from the Store">
+  <input type="submit" value="Remove this Book from the Store">
+<% end %>
+
+
+<%= form_tag "/client/pictures/new", method: :get do %>
+  Product ID: <input type="text" name="product_id" value= <%= "#{@product['id']}" %> readonly>
+  <input type="submit" value="Add an Image">
 <% end %>
 
 <%= button_to "Cancel", "/client/products", method: :get %>

@@ -1,10 +1,21 @@
 <p>Title: <%= @product['title'] %></p>
 <p>Author: <%= @product['author'] %></p>
-<h4><%= @product['discount_message'] %></h4>
-<p>Price: <%= @product['price'] %></p>
-<p>Price with Tax: <%= @product['total'] %> (Tax: <%= @product['tax'] %>)</p>
+<h4><%= @product['formatted']['discount_message'] %></h4>
+<p>Price: $<%= @product['price'] %></p>
+<p>Price with Tax: $<%= @product['formatted']['total'] %> (Tax: $<%= @product['formatted']['tax'] %>)</p>
 <p>Format: <%= @product['format'] %></p>
 <p>Condition: <%= @product['condition'] %></p>
+<% if @product['formatted']['supplier'] %>
+  <p>Publisher: <%= @product['formatted']['supplier']['name'] %></p>
+<% end %>
+<% if @product['formatted']['image'][0] %>
+<p>Images:</p>
+  <ul>
+    <% @product['formatted']['image'].each do |image| %>
+      <li><p><%= image['url'] %></p></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_tag "/client/products/#{params[:id]}/edit", method: :get do %>
   <input type="submit" value="Edit this Book">
