@@ -1,0 +1,14 @@
+<p>User: <%= @order['user']['name'] %></p>
+<p>User Email: <%= @order['user']['email'] %></p>
+<p>Product: <%= @order['product']['name'] %></p>
+<p>Price Per Item: $<%= @order['product']['price'] %></p>
+<p><%= @order['product_pictures'][0] %></p>
+<p>Quantity: <%= @order['quantity'] %></p>
+<p>Subtotal: $<%= @order['subtotal'] %></p>
+<p>Tax: $<%= @order['tax'] %></p>
+<p>Total: $<%= @order['total'] %></p>
+<p>Purchase Timestamp: <%= @order['created_at'] %></p>
+
+<%= form_tag "/client/products", method: :get do %>
+  <input type="submit" value="Return Home">
+<% end %>

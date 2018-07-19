@@ -16,6 +16,14 @@
     <% end %>
   </ul>
 <% end %>
+<% if @product['formatted']['genres'][0] %>
+<p>Categories and Genres:</p>
+  <ul>
+    <% @product['formatted']['genres'].each do |genre| %>
+      <li><p><%= genre['name'] %></p></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_tag "/client/products/#{params[:id]}/edit", method: :get do %>
   <input type="submit" value="Edit this Book">
@@ -23,4 +31,17 @@
 
 <%= form_tag "/client/products", method: :get do %>
   <input type="submit" value="Return Home">
+<% end %>
+
+<p>Buy Now</p>
+<%= form_tag '/client/carted_products', method: :post do %>
+  <div>
+    Product ID: <input type="text" name="product_id" value="<%= "#{params[:id]}" %>" readonly>
+  </div>
+  <div>
+    Quantity: <input type="text" name="quantity">
+  </div>
+  <div>
+    <input type="submit" value="Add to Cart">
+  </div>
 <% end %>
