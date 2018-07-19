@@ -1,1 +1,11 @@
 <p>hello<p>
+
+<p>User: <%= @carted_product['user']['name'] %></p>
+<p>Product: <%= @carted_product['product']['name'] %></p>
+<p>Price Per Item: $<%= @carted_product['product']['price'] %></p>
+<p>Quantity: <%= @carted_product['quantity'] %></p>
+<p>Purchase Timestamp: <%= @carted_product['created_at'] %></p>
+
+<%= form_tag "/client/products", method: :get do %>
+  <input type="submit" value="Return Home">
+<% end %>

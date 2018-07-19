@@ -9,6 +9,7 @@ class Client::CartedProductsController < ApplicationController
       quantity: params[:quantity]
       }
     )
+    @carted_product = response.body
     render "show.html.erb"
   end
 end
