@@ -36,7 +36,7 @@
 <p>Buy Now</p>
 <%= form_tag '/client/carted_products', method: :post do %>
   <div>
-    Product ID: <input type="text" name="product_id" value="<%= "#{params[:id]}" %>" readonly>
+    <input type="hidden" name="product_id" value="<%= "#{params[:id]}" %>">
   </div>
   <div>
     Quantity: <input type="text" name="quantity">

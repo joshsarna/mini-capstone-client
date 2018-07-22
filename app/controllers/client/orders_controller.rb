@@ -3,11 +3,7 @@ class Client::OrdersController < ApplicationController
   end
 
   def create
-    order_params = {
-      product_id: params[:product_id],
-      quantity: params[:quantity]
-    }
-    response = Unirest.post("localhost:3000/api/orders", parameters: order_params)
+    response = Unirest.post("localhost:3000/api/orders")
     @order = response.body
     flash[:create] = "You successfully made a purchase."
     render "show.html.erb"

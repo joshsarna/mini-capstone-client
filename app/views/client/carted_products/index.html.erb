@@ -1,0 +1,16 @@
+<% @carted_products.each do |carted_product| %>
+  <p>Product: <%= carted_product['product']['name'] %></p>
+  <p>Quantity: <%= carted_product['quantity'] %></p>
+  <p>Price per Item: <%= carted_product['product']['price'] %></p>
+  <hr>
+<% end %>
+
+<p>Buy Now</p>
+<%= form_tag '/client/orders', method: :post do %>
+  <div>
+    <input type="submit" value="Check Out">
+  </div>
+<% end %>
+<%= form_tag "/client/products", method: :get do %>
+  <input type="submit" value="Return Home">
+<% end %>
