@@ -11,9 +11,13 @@ class Client::ProductsController < ApplicationController
     flash[:search_message] = "Showing results for '#{params[:search]}'"
   end
 
+  def new
+    @product = {}
+    render "new.html.erb"
+  end
+
   def create
-    response = Unirest.post("localhost:3000/api/products", parameters:
-      {
+    @product = {
         input_name: params[:input_name],
         input_author: params[:input_author],
         input_price: params[:input_price],
@@ -23,10 +27,14 @@ class Client::ProductsController < ApplicationController
         input_image_url: params[:input_image_url],
         input_supplier_id: params[:input_supplier_id]
       }
-    )
-    @product = response.body
-    flash[:create] = "You successfully added a book to the store."
-    redirect_to "/client/products/#{@product['id']}"
+    response = Unirest.post("localhost:3000/api/products", parameters: @product)
+    if response.code == 200
+      flash[:create] = "You successfully added a book to the store."
+      redirect_to "/client/products/#{@product['id']}"
+    else # sad path
+      @errors = response.body['errors']
+      render "new.html.erb"
+    end
   end
 
   def show

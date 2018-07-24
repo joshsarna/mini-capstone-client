@@ -1,29 +1,35 @@
 <p>Fill out book information below and click submit to add a new book to the store.</p>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 <%= form_tag '/client/products', method: :post do %>
   <div>
-    Title: <input type="text" name="input_name">
+    Title: <input type="text" name="input_name" value="<%= @product[:input_name] %>">
   </div>
   <div>
-    Author: <input type="text" name="input_author">
+    Author: <input type="text" name="input_author" value="<%= @product[:input_author] %> ">
   </div>
   <div>
-    Price: <input type="text" name="input_price">
+    Price: <input type="text" name="input_price" value="<%= @product[:input_price] %> ">
   </div>
   <div>
-    Description: <input type="text" name="input_description">
+    Description: <input type="text" name="input_description" value="<%= @product[:input_description] %> ">
   </div>
   <div>
-    Format: <input type="text" name="input_format">
+    Format: <input type="text" name="input_format" value="<%= @product[:input_format] %> ">
   </div>
   <div>
-    Condition: <input type="text" name="input_condition">
+    Condition: <input type="text" name="input_condition" value="<%= @product[:input_condition] %> ">
   </div>
   <div>
-    Image URL: <input type="text" name="input_image_url">
+    Image URL: <input type="text" name="input_image_url" value="<%= @product[:input_image_url] %> ">
   </div>
   <div>
-    Supplier ID: <input type="integer" name="input_supplier_id">
+    Supplier ID: <input type="integer" name="input_supplier_id" value="<%= @product[:input_supplier_id] %> ">
   </div>
   <div>
     <input type="submit" value="Submit">

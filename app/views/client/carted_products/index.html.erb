@@ -1,9 +1,20 @@
-<% @carted_products.each do |carted_product| %>
-  <p>Product: <%= carted_product['product']['name'] %></p>
-  <p>Quantity: <%= carted_product['quantity'] %></p>
-  <p>Price per Item: <%= carted_product['product']['price'] %></p>
-  <hr>
+ <% if @carted_products %>
+  <% @carted_products.each do |carted_product| %>
+    <p>Product: <%= carted_product['product']['name'] %></p>
+    <p>Quantity: <%= carted_product['quantity'] %></p>
+    <p>Price per Item: <%= carted_product['product']['price'] %></p>
+    <%= form_tag '/client/carted_products', method: :delete do %>
+      <div>
+        <input type="hidden" name="product_id" value="<%= "#{carted_product['id']}" %>">
+      </div>
+      <div>
+        <input type="submit" value="Remove from Cart">
+      </div>
+    <% end %>
+    <hr>
+  <% end %>
 <% end %>
+
 
 <p>Buy Now</p>
 <%= form_tag '/client/orders', method: :post do %>
